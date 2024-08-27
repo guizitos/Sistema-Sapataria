@@ -2,7 +2,6 @@ CREATE DATABASE IF NOT EXISTS sapataria;
 
 USE sapataria;
 
--- Tabela de Calçados
 CREATE TABLE IF NOT EXISTS Calcados (
     codigo_calcado INT PRIMARY KEY,
     nome VARCHAR(100),
@@ -11,13 +10,11 @@ CREATE TABLE IF NOT EXISTS Calcados (
     cor VARCHAR(30)
 );
 
--- Tabela de Categorias
 CREATE TABLE IF NOT EXISTS Categorias (
     codigo_categoria INT PRIMARY KEY,
     nome_categoria VARCHAR(50)
 );
 
--- Tabela de Estoque
 CREATE TABLE IF NOT EXISTS Estoque (
     codigo_estoque INT PRIMARY KEY,
     codigo_calcado INT,
@@ -25,14 +22,12 @@ CREATE TABLE IF NOT EXISTS Estoque (
     FOREIGN KEY (codigo_calcado) REFERENCES Calcados(codigo_calcado)
 );
 
--- Tabela de Vendedores
 CREATE TABLE IF NOT EXISTS Vendedores (
     codigo_vendedor INT PRIMARY KEY,
     nome_vendedor VARCHAR(100),
     email_vendedor VARCHAR(100)
 );
 
--- Tabela de Vendas
 CREATE TABLE IF NOT EXISTS Vendas (
     codigo_venda INT PRIMARY KEY,
     data_venda DATE,
@@ -44,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Vendas (
     FOREIGN KEY (codigo_vendedor) REFERENCES Vendedores(codigo_vendedor)
 );
 
--- Relacionamento entre Calcados e Categorias (Tabela de Relacionamento)
+-- Relacionamento entre Calcados e Categorias 
 CREATE TABLE IF NOT EXISTS Calcados_Categorias (
     codigo_calcado INT,
     codigo_categoria INT,
@@ -53,29 +48,25 @@ CREATE TABLE IF NOT EXISTS Calcados_Categorias (
     FOREIGN KEY (codigo_categoria) REFERENCES Categorias(codigo_categoria)
 );
 
--- Inserindo categorias de exemplo
 INSERT INTO Categorias (codigo_categoria, nome_categoria)
 VALUES (1, 'Esportivo'), 
        (2, 'Casual'),
        (3, 'Social');
 
--- Inserindo calçados de exemplo
 INSERT INTO Calcados (codigo_calcado, nome, marca, valor, cor)
 VALUES (1, 'Tênis Running', 'Nike', 299.99, 'Preto'),
        (2, 'Sapatênis Casual', 'Adidas', 249.99, 'Branco'),
        (3, 'Sapato Social', 'Ferracini', 399.99, 'Marrom');
 
--- Inserindo registros na tabela de Estoque
 INSERT INTO Estoque (codigo_estoque, codigo_calcado, quantidade)
 VALUES (1, 1, 50),
        (2, 2, 30),
        (3, 3, 20);
 
--- Relacionando calçados com categorias na tabela de relacionamento
 INSERT INTO Calcados_Categorias (codigo_calcado, codigo_categoria)
-VALUES (1, 1), -- Tênis Running na categoria Esportivo
-       (2, 2), -- Sapatênis Casual na categoria Casual
-       (3, 3); -- Sapato Social na categoria Social
+VALUES (1, 1), 
+       (2, 2), 
+       (3, 3); 
 
 
 
