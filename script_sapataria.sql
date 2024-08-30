@@ -53,25 +53,23 @@ CREATE TABLE IF NOT EXISTS Calcados_Categorias (
     FOREIGN KEY (codigo_categoria) REFERENCES Categorias(codigo_categoria)
 );
 
--- Inserindo categorias de exemplo
+-- Inserindo Dados
+
 INSERT INTO Categorias (codigo_categoria, nome_categoria)
 VALUES (1, 'Esportivo'), 
        (2, 'Casual'),
        (3, 'Social');
 
--- Inserindo calçados de exemplo
 INSERT INTO Calcados (codigo_calcado, nome, marca, valor, cor)
 VALUES (1, 'Tênis Running', 'Nike', 299.99, 'Preto'),
        (2, 'Sapatênis Casual', 'Adidas', 249.99, 'Branco'),
        (3, 'Sapato Social', 'Ferracini', 399.99, 'Marrom');
 
--- Inserindo registros na tabela de Estoque
 INSERT INTO Estoque (codigo_estoque, codigo_calcado, quantidade)
 VALUES (1, 1, 50),
        (2, 2, 30),
        (3, 3, 20);
 
--- Adicionando três vendedores à tabela Vendedores
 INSERT INTO Vendedores (codigo_vendedor, nome_vendedor, email_vendedor)
 VALUES (1, 'João Silva', 'joao.silva@example.com'),
        (2, 'Maria Oliveira', 'maria.oliveira@example.com'),
